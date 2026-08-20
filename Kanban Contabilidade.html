@@ -798,8 +798,8 @@ function aviso(texto) {
 
 async function carregar() {
   try {
-    const bruto = localStorage.getItem(CHAVE);
-    if (bruto) estado = JSON.parse(bruto);
+    const r = await window.storage.get(CHAVE);
+    if (r && r.value) estado = JSON.parse(r.value);
   } catch (e) {
     estado = { cartoes: {} };
   }
@@ -808,12 +808,12 @@ async function carregar() {
 
 function salvar() {
   clearTimeout(salvando);
-  salvando = setTimeout(function () {
+  salvando = setTimeout(async function () {
     try {
-      localStorage.setItem(CHAVE, JSON.stringify(estado));
-      aviso('Salvo neste aparelho');
+      const r = await window.storage.set(CHAVE, JSON.stringify(estado));
+      aviso(r ? 'Salvo' : 'Não foi possível salvar agora.');
     } catch (e) {
-      aviso('Não foi possível salvar. Veja se o navegador está no modo anônimo.');
+      aviso('Não foi possível salvar agora. Tente de novo.');
     }
   }, 350);
 }

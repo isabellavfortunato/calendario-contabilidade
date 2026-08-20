@@ -1,0 +1,13 @@
+{
+  "name": "Estudos de contabilidade",
+  "short_name": "Contabilidade",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F3F8FD",
+  "theme_color": "#1F5490",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
